@@ -1,0 +1,422 @@
+Construct a linked List containing names of colours: red, blue, yellow and orange. Then extend the program to do the following:
+i.	Display the contents of the List using an Iterator
+ii.	Display the contents of the List in reverse order using a ListIterator
+iii.	Create another list containing pink and green. Insert the elements of this list between blue and yellow.
+==>
+import java.util.LinkedList;
+import java.util.ListIterator;
+
+public class ColorLinkedList {
+    public static void main(String[] args) {
+        // Create a linked list of colors
+        LinkedList<String> colorList = new LinkedList<>();
+        colorList.add("red");
+        colorList.add("blue");
+        colorList.add("yellow");
+        colorList.add("orange");
+
+        // i. Display the contents of the List using an Iterator
+        System.out.println("List contents using Iterator:");
+        displayList(colorList);
+
+        // ii. Display the contents of the List in reverse order using a ListIterator
+        System.out.println("\nList contents in reverse order using ListIterator:");
+        displayListInReverse(colorList);
+
+        // iii. Create another list containing pink and green. Insert the elements of this list between blue and yellow.
+        LinkedList<String> newColors = new LinkedList<>();
+        newColors.add("pink");
+        newColors.add("green");
+
+        // Insert elements from newColors between blue and yellow
+        insertBetween(colorList, "blue", "yellow", newColors);
+
+        // Display the updated list
+        System.out.println("\nUpdated list after inserting elements:");
+        displayList(colorList);
+    }
+
+    // Display the contents of the list using an Iterator
+    private static void displayList(LinkedList<String> list) {
+        ListIterator<String> iterator = list.listIterator();
+        while (iterator.hasNext()) {
+            System.out.println(iterator.next());
+        }
+    }
+
+    // Display the contents of the list in reverse order using a ListIterator
+    private static void displayListInReverse(LinkedList<String> list) {
+        ListIterator<String> iterator = list.listIterator(list.size());
+        while (iterator.hasPrevious()) {
+            System.out.println(iterator.previous());
+        }
+    }
+
+    // Insert elements from another list between specified elements in the original list
+    private static void insertBetween(LinkedList<String> originalList, String before, String after, LinkedList<String> newList) {
+        ListIterator<String> iterator = originalList.listIterator();
+        while (iterator.hasNext()) {
+            if (iterator.next().equals(before)) {
+                // Insert elements from new list after the "before" element
+                originalList.addAll(iterator.nextIndex(), newList);
+                break;
+            }
+        }
+    }
+}
+***********************************************************************************************************************************
+Q2)Define a class MyNumber having one private integer data member. Write a default constructor initialize it to 0 and another constructor to initialize it to a value. Write methods isNegative, isPositive, isOdd, iseven. Use command line argument to pass a value to the object and perform the above operations.
+==>import java.util.*;
+public class temp {
+
+    public static class Mynumber{
+        private int mynumber;
+        Mynumber(){
+            mynumber=0;
+        }
+        Mynumber(int n)
+        {
+            mynumber=n;
+        }
+         void display()
+        {
+            System.out.print("Current number value is :");
+            System.out.println(mynumber);
+            System.out.println();
+        }
+         void isodd()
+        {
+            if(mynumber%2!=0)
+            System.out.println(mynumber+" is odd");
+            else
+            System.out.println(mynumber+" is a odd");
+            
+        }
+         void iseven()
+        {
+            if(mynumber%2==0)
+            System.out.println(mynumber+" is even");
+            else
+            System.out.println(mynumber+" is a even");
+        }
+         void isnegative()
+        {
+            if(mynumber<0)
+            System.out.println(mynumber+" is negative");
+            else
+            System.out.println(mynumber+" is a negative");
+        }
+         void ispositive()
+        {
+            if(mynumber>0)
+            System.out.println(mynumber+" is positive");
+            else
+            System.out.println(mynumber+" is a positive");
+        }
+    }
+    public static void main(String[] args)throws Exception {
+        Mynumber num=new Mynumber();
+        num.display();
+        Mynumber num2=new Mynumber(Integer.parseInt(args[0]));
+        num2.display();
+        num2.iseven();
+        num2.isodd();
+        num2.isnegative();
+        num2.ispositive();
+
+    }
+}
+**********************************************************************************************************************************
+Q)Write a program to create class Account (accno, accname, balance). Create an array of 'n' Account objects. Define static method “sortAccount” which sorts the array on the basis of balance. Display account details in sorted order.
+==>import java.util.Arrays;
+
+public class temp2 {
+    public static class Account {
+        int accno;
+        String acname;
+        int balance;
+
+        public void setAccno(int accno) {
+            this.accno = accno;
+        }
+
+        public void setAcname(String acname) {
+            this.acname = acname;
+        }
+
+        public void setBalance(int balance) {
+            this.balance = balance;
+        }
+
+        void display() {
+            System.out.println(accno + "\t" + acname + "\t" + balance);
+        }
+
+        public static void sort(Account[] arr) {
+            int n = arr.length;
+            for (int i = 0; i < n - 1; i++) {
+                for (int j = 0; j < n - i - 1; j++) {
+                    if (arr[j].balance > arr[j + 1].balance) {
+                        // swap temp and arr[i]
+                        Account temp = arr[j];
+                        arr[j] = arr[j + 1];
+                        arr[j + 1] = temp;
+                    }
+                }
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+
+        Account arr[] = new Account[3];
+        for (int i = 0; i < arr.length; i++) {
+            arr[i] = new Account();
+        }
+
+        arr[0].setAccno(0);
+        arr[0].setAcname("om");
+        arr[0].setBalance(100);
+
+        arr[1].setAccno(1);
+        arr[1].setAcname("ram");
+        arr[1].setBalance(10);
+
+        arr[2].setAccno(2);
+        arr[2].setAcname("shyam");
+        arr[2].setBalance(200);
+
+        System.out.println("Account details before sorting:");
+        for (Account account : arr) {
+            account.display();
+        }
+
+        
+        Account.sort(arr);
+
+        System.out.println("\nAccount details after sorting based on balance:");
+        for (Account account : arr) {
+            account.display();
+        }
+    }
+}
+*********************************************************************************************************************************
+Q)Write a program which define class Product with data member as id, name and price. Store the information of 5 products and Display the name of product having minimum price (Use array of object).
+==>public class temp3 {
+    public static class product {
+        int Id;
+        String Name;
+        int Price;
+
+        public void setId(int id) {
+            this.Id = id;
+        }
+
+        public void setName(String name) {
+            this.Name = name;
+        }
+
+        public void setPrice(int price) {
+            this.Price = price;
+        }
+
+        void display() {
+            System.out.println(Id + " " + Name + " " + Price);
+        }
+
+        static void mindisplay(product arr[]) {
+            product temp = arr[0];
+            for (int i = 0; i < arr.length; i++) {
+                if (temp.Price > arr[i].Price) {
+                    temp = arr[i];
+                }
+            }
+
+            System.out.println("The minimum price product is:");
+            temp.display();
+        }
+    }
+
+    public static void main(String[] args) {
+        product arr[] = new product[3];
+        for (int i = 0; i < arr.length; i++) {
+            arr[i] = new product();
+        }
+        arr[0].setId(0);
+        arr[0].setName("om");
+        arr[0].setPrice(12);
+
+        arr[1].setId(1);
+        arr[1].setName("ram");
+        arr[1].setPrice(45);
+
+        arr[2].setId(3);
+        arr[2].setName("om");
+        arr[2].setPrice(2);
+
+        System.out.println("Product details:");
+        for (product prod : arr) {
+            prod.display();
+        }
+
+        System.out.println("\nProduct with the minimum price:");
+        product.mindisplay(arr);
+    }
+}
+*********************************************************************************************************************************
+Q)Define a “Point” class having members – x,y (coordinates). Define default constructor and parameterized constructors. Define subclass “ColorPoint” with member as color. Write display method to display the details of Point.
+==>
+public class Point {
+    // Members
+    private int x;
+    private int y;
+
+    // Default constructor
+    public Point() {
+        this.x = 0;
+        this.y = 0;
+    }
+
+    // Parameterized constructor
+    public Point(int x, int y) {
+        this.x = x;
+        this.y = y;
+    }
+
+    // Display method
+    public void display() {
+        System.out.println("Point coordinates: (" + x + ", " + y + ")");
+    }
+}
+
+// Subclass ColorPoint
+class ColorPoint extends Point {
+    // Additional member
+    private String color;
+
+    // Parameterized constructor for ColorPoint
+    public ColorPoint(int x, int y, String color) {
+        // Call the parameterized constructor of the superclass (Point)
+        super(x, y);
+        this.color = color;
+    }
+
+    // Display method for ColorPoint
+    public void display() {
+        // Call the display method of the superclass (Point)
+        super.display();
+        System.out.println("Color: " + color);
+    }
+}
+
+// Main class
+class PointDemo {
+    public static void main(String[] args) {
+        // Create a Point object using the default constructor
+        Point point1 = new Point();
+
+        // Create a Point object using the parameterized constructor
+        Point point2 = new Point(3, 5);
+
+        // Display details of points
+        System.out.println("Details of Point 1:");
+        point1.display();
+
+        System.out.println("\nDetails of Point 2:");
+        point2.display();
+
+        // Create a ColorPoint object
+        ColorPoint coloredPoint = new ColorPoint(1, 1, "Red");
+
+        // Display details of the ColorPoint
+        System.out.println("\nDetails of Colored Point:");
+        coloredPoint.display();
+    }
+}
+*********************************************************************************************************************************
+Q) Define a class MyDate (day, month, year) with methods to accept and display MyDate object. Accept date as dd, mm, yyyy. Throw user defined exception “InvalidDateException” ifthe date is invalid. Examples of invalid dates : 12 15 2015, 31 6 1990, 29 2 2001
+==>
+import java .io.*;
+class InvalidDateException extends Exception
+{
+}
+class MyDate
+{
+    int day,mon,yr;
+
+        void accept(int d,int m,int y)
+        {
+            day=d;
+            mon=m;
+            yr=y;
+        }
+        void display()
+        {
+            System.out.println("Date is valid : "+day+"/"+mon+"/"+yr);
+        }
+}
+class DateMain
+{
+    public static void main(String arg[]) throws Exception
+    {
+        System.out.println("Enter Date  :  dd mm yyyy ");
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        int day=Integer.parseInt(br.readLine());
+        int mon=Integer.parseInt(br.readLine());
+        int yr=Integer.parseInt(br.readLine());
+        int flag=0;
+        try
+            {
+                    if(mon<=0 || mon>12)
+
+                        throw  new InvalidDateException();
+                    else
+                    {
+                        if(mon==1 || mon==3 || mon==5 || mon==7 || mon==8 || mon==10 || mon==12)
+                        {
+                            if(day>=1 && day <=31)       
+                                flag=1;
+                            else
+                                throw  new InvalidDateException();
+                        }
+                        else if (mon==2)
+                        {
+                            if(yr%4==0)
+                            {
+                                if(day>=1 && day<=29)
+                                    flag=1;
+                                else throw  new InvalidDateException();
+                            }
+                            else
+                            {
+                                if(day>=1 && day<=28)
+                                    flag=1;
+                                else throw  new InvalidDateException();
+                            }
+                        }
+                        else                
+                        {
+                            if(mon==4 || mon == 6 || mon== 9 || mon==11)
+                            {
+                                if(day>=1 && day <=30)
+                                    flag=1;
+                                else throw  new InvalidDateException();
+                            }
+                        }
+                    }
+                if(flag== 1)
+                {
+                    MyDate dt = new MyDate();
+                    dt.accept(day,mon,yr);
+                    dt.display();
+                }
+            }
+        catch (InvalidDateException mm)
+        {
+            System.out.println("Invalid Date");
+        }
+       
+    }
+
+***********************************************************************************************************************************
+
