@@ -1,0 +1,464 @@
+Q-)write a Java program to accept a number from command prompt and generate 
+multiplication table of a number. 
+==>
+import java.util.*;
+import java.io.*;
+public class input{
+    public static void main(String[] args)throws Exception {
+        BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
+        int num=Integer.parseInt(br.readLine());
+        for(int i=1;i<=10;i++)
+        {
+            System.out.println(num+" * "+i+" ="+i*num);
+        }
+        
+    }
+}
+
+**************************************************************************************************************************************************************************
+Q2)Write a Java Program to Reverse a Number. Accept number using command line argument.
+==>
+import java.util.*;
+
+public class command {
+    public static void main(String[] args) {
+        int a;
+        a=Integer.parseInt(args[0]);
+        int reverse=0;
+        while(a!=0)
+        {
+            int digit=a%10;
+            reverse=reverse*10+digit;
+            a=a/10;
+        }
+        System.out.println(reverse);
+    }
+}
+**************************************************************************************************************************************************************************
+Q3)Write a Java program to print the sum of elements of the array. Also display array elements 
+in ascending order.
+==>
+import java.util.*;
+import java.util.Arrays;
+public class sumarray{
+    public static void main(String[] args) {
+        int arr[]={2,3,4,1};
+        int sum=0;
+        for(int i=0;i<arr.length;i++)
+        {
+            System.out.print(arr[i]+" ");
+            sum+=arr[i];
+        }
+        System.out.println();
+        System.out.println(sum);
+        Arrays.sort(arr);
+        for(int i=0;i<arr.length;i++)
+        {
+            System.out.print(arr[i]+" ");
+            
+        }
+
+    }
+}
+**********************************************************************************************************************************
+Q4)Write a Java program create class as MyDate with dd,mm,yy as data members. Write 
+default and parameterized constructor. Display the date in dd-mm-yy format.(Use this 
+keyword)
+==>
+import java.util.*;
+public class mydate{
+    int dd;
+    int yy;
+    int mm;
+
+    public mydate()
+    {
+        dd=1;
+        mm=1;
+        yy=2001;
+    }
+    public mydate(int day,int month,int year){
+        this.dd=day;
+        this.mm=month;
+        this.yy=year;
+    }
+    public void display()
+    {
+        System.out.println(dd+" "+mm+" "+yy);
+    }
+    public static void main(String[] args)
+    {
+        mydate d=new mydate();
+        d.display();
+
+        mydate p=new mydate(12,10,2004);
+        p.display();
+    }
+}
+**************************************************************************************************************************************************************************
+Q)Write a program to accept ‘n’ integers from the user & store them in an Array List collection. Display the elements of Array List.
+==>
+import java.util.*;
+public class arraylist {
+    public static void main(String[] args) {
+
+        Scanner sc=new Scanner(System.in);
+        ArrayList<Integer>List=new ArrayList();
+        System.out.print("Enter number of elements : ");
+        int n=sc.nextInt();
+        
+        System.out.println("Enter "+n+" integers:");
+        for(int i=0;i<n;i++)
+        {
+            List.add(sc.nextInt());
+        }
+        System.out.println("elements of array: ");
+        for(int number : List)
+        {
+            System.out.println(number);
+        }
+        sc.close();
+    }
+    
+}
+
+**************************************************************************************************************************************************************************
+Q1. Write a program to accept the user name and greets the user by name. Before displaying the user's name, convert it to upper case letters. For example, if the user's name is Raj, then display greet message as "Hello, RAJ, nice to meet you!".
+==>
+import java.util.ArrayList;
+import java.util.Scanner;
+class HelloWorld {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+   
+        System.out.print("Enter your name: ");
+        String userName = scanner.nextLine();
+
+        String upperCaseName = userName.toUpperCase();
+
+        System.out.println("Hello, " + upperCaseName + ", nice to meet you!");
+
+        scanner.close();
+    }
+}
+**************************************************************************************************************************************************************************
+Q1. Write a program to accept a number from the user, if number is zero then throw user defined exception ―Number is 0, otherwise display factorial of a number.
+==>import java.util.Scanner;
+
+import java.util.Scanner;
+class UserException extends Exception {
+    public UserException(String message) {
+        super(message);
+    }
+}
+public class FactorialCalc {
+     public static int Factorial(int n) {
+        if (n == 0 || n == 1) {
+            return 1;
+        } else {
+            return n * Factorial(n - 1);
+        }
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        try {
+            System.out.print("Enter a number: ");
+            int num = sc.nextInt();
+
+            if (num == 0) {
+                throw new UserException("Number is 0");
+            }
+
+            int fact =Factorial(num);
+            System.out.print("Factorial of " + num + " is: " + fact);
+        } catch (UserException e) {
+            System.out.print("Error: " + e.getMessage());
+        } catch (Exception e) {
+            System.out.print("Error: Invalid input. Please enter a valid number.");
+        } finally {
+            sc.close();
+        }
+    }
+}
+
+**************************************************************************************************************************************************************************
+Q1. Accept 'n' integers from the user and store them in a collection. Display them in the sorted order. The collection should not accept duplicate elements. (Use a suitable collection). Search for a particular element using predefined search method in the Collection framework. [10 Marks]
+==>
+import java.util.*;
+
+public class SortedCollection {
+    public static void main(String[] args) {
+        try (Scanner sc = new Scanner(System.in)) {
+            int n, e;
+
+            TreeSet<Integer> set = new TreeSet<>();
+
+            System.out.println("Enter the number of integers:");
+            n = sc.nextInt();
+
+            for (int i = 0; i < n; i++) {
+                System.out.println("Enter an integer:");
+                e = sc.nextInt();
+                set.add(e);
+            }
+
+            System.out.println("The integers in sorted order: " + set);
+
+            System.out.println("Enter an element to search:");
+            e = sc.nextInt();
+
+            if (set.contains(e))
+                System.out.println("Element is found");
+            else
+                System.out.println("Element is NOT found");
+
+        } catch (Exception ex) {
+            System.err.println("Error: " + ex.getMessage());
+        }
+    }
+}
+
+**************************************************************************************************************************************************************************
+Q1. Create a Hash table containing Employee name and Salary. Display the details of the hash table.	[10 Marks]
+==>
+import java.util.*;
+public class Employee {
+      public static void main(String[] args) {
+        
+        Hashtable<String, Double> employeeTable = new Hashtable<>();
+
+        
+        employeeTable.put("John Doe", 50000.0);
+        employeeTable.put("Jane Smith", 60000.0);
+        employeeTable.put("Bob Johnson", 55000.0);
+        employeeTable.put("Alice Williams", 70000.0);
+
+        
+        System.out.println("Employee Details:");
+        System.out.println("------------------------------");
+
+        for (Map.Entry<String, Double> entry : employeeTable.entrySet()) {
+            String employeeName = entry.getKey();
+            double salary = entry.getValue();
+
+            System.out.println("Employee: " + employeeName + ", Salary: $" + salary);
+        }
+    }
+    
+}
+
+**************************************************************************************************************************************************************************
+Q1. Write a program to accept a number from user. Check whether number is perfect or not. Use BufferedReader class for accepting input from user.	[10 Marks]
+==>
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.util.*;
+
+public class perfect {
+
+    static boolean isPerfect(int n) {
+
+        if (n == 1)
+            return false;
+
+        int sum = 1;
+
+        for (int i = 2; i < n; i++) {
+
+            if (n % i == 0) {
+                sum += i;
+            }
+        }
+
+        if (sum == n)
+            return true;
+
+        return false;
+    }
+
+    public static void main(String[] args) throws Exception {
+
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        int n = Integer.parseInt(br.readLine());
+
+        if (isPerfect(n))
+            System.out.println(n + " is a perfect number");
+        else
+            System.out.println(
+                    n + " is not a perfect number");
+    }
+
+}
+
+**************************************************************************************************************************************************************************
+Q1. Write a program to accept a number from user. Check whether number is prime or not
+==>
+import java.util.Scanner;
+
+public class PrimeChecker {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter a number: ");
+        int num = scanner.nextInt();
+
+        if (isPrime(num)) {
+            System.out.println(num + " is a prime number.");
+        } else {
+            System.out.println(num + " is not a prime number.");
+        }
+
+        scanner.close();
+    }
+
+   static boolean isPrime(int num) {
+        if (num <= 1) {
+            return false;
+        }
+        for (int i = 2; i <= Math.sqrt(num); i++) {
+            if (num % i == 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+}
+
+**************************************************************************************************************************************************************************
+Q1. Create a package named “Series” having a class to print series of Square of numbers. Write a program to generate “n” terms series.	[10 Marks]
+==>
+// Series.java (package)
+package Series;
+
+public class SqrSeries {
+    public static void generateSeries(int n) {
+        System.out.print("Series of squares: ");
+        for (int i = 1; i <= n; i++) {
+            System.out.print(i * i + " ");
+        }
+        System.out.println();
+    }
+}
+
+
+// MainProgram.java
+import Series.SqrSeries; // Import the SquareSeries class from the Series package
+
+public class MainProgram {
+    public static void main(String[] args) {
+        int n = 5; // You can change this to the desired number of terms
+
+        // Generate and print the series
+        SqrSeries.generateSeries(n);
+    }
+}
+**************************************************************************************************************************************************************************
+Q1. Construct a Linked List having names of Fruits: Apple, Banana, Guava and Orange. Display the contents of the List using an Iterator.	[10 Marks]
+==>
+
+import java.util.*;
+public class FruitList {
+     public static void main(String[] args) {
+        
+        LinkedList<String> fruitList = new LinkedList<>();
+
+        
+        fruitList.add("Apple");
+        fruitList.add("Banana");
+        fruitList.add("Guava");
+        fruitList.add("Orange");
+
+        
+        System.out.println("Fruit List:");
+        Iterator<String> iterator = fruitList.iterator();
+        while (iterator.hasNext()) {
+            System.out.println(iterator.next());
+        }
+    }
+    
+}
+
+**************************************************************************************************************************************************************************
+Q1. Write a program to create JDBC connection. On successful connection with database display appropriate message to user.	[10 Marks]
+==>
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+
+public class JDBCConnectionExample {
+    public static void main(String[] args) {
+        String jdbcUrl = "jdbc:mysql://localhost:3306/your_database"; // Change this URL to your database
+        String username = "your_username";
+        String password = "your_password";
+
+        // Establishing JDBC connection
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+
+            Connection connection = DriverManager.getConnection(jdbcUrl, username, password);
+
+            if (connection != null) {
+                System.out.println("Connected to the database!");
+               
+            } else {
+                System.out.println("Failed to connect to the database.");
+            }
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace(); // Handle errors appropriately
+        }
+    }
+}
+**************************************************************************************************************************************************************************
+ Define a class MyNumber having one private integer data member. Write a parameterized constructor to initialize to a value. Write isEven() to check given number is even or not. Use command line argument to pass a value to the object
+==>
+public class MyNumber {
+    private int number;
+
+    public MyNumber(int number) {
+        this.number = number;
+    }
+
+    public boolean isEven() {
+        return number % 2 == 0;
+    }
+
+    public static void main(String[] args) {
+
+        int inputValue;
+
+        inputValue = Integer.parseInt(args[0]);
+
+        MyNumber myNumber = new MyNumber(inputValue);
+
+        System.out.println("Is the number even? " + myNumber.isEven());
+    }
+}
+
+**************************************************************************************************************************************************************************
+
+Q1. Write a program to accept 3 numbers using command line argument. Sort and display the numbers.	
+==>
+import java.util.*;
+
+public class SortNumbers {
+    public static void main(String[] args) {
+
+        int numbers[] = new int[3];
+        for (int i = 0; i < 3; i++) {
+            numbers[i] = Integer.parseInt(args[i]);
+        }
+
+        Arrays.sort(numbers);
+
+        System.out.print("Sorted Numbers: ");
+        for (int num : numbers) {
+            System.out.print(num + " ");
+        }
+        System.out.println();
+    }
+}
+
+
