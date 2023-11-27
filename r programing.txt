@@ -1,0 +1,238 @@
+Q.1 Write a R program to add, multiply and divide two vectors of integertype. (Vector
+length should be minimum 4) [10 Marks]
+==>
+vector1 <- c(2, 4, 6, 8)
+vector2 <- c(1, 3, 5, 7)
+
+
+sum_result <- vector1 + vector2
+cat("Sum of vectors:", sum_result, "\n")
+
+
+product_result <- vector1 * vector2
+cat("Product of vectors:", product_result, "\n")
+
+
+quotient_result <- vector1 / vector2
+cat("Quotient of vectors:", quotient_result, "\n")
+
+**************************************************************************************************************************************
+Q.2 Write an R program to calculate the multiplication table using afunction.
+[10 Marks]
+==>multiplication_table <- function(number) {
+  cat("Multiplication table for", number, ":\n")
+  
+  for (i in 1:10) {
+    result <- number * i
+    cat(number, "x", i, "=", result, "\n")
+  }
+}
+
+multiplication_table(5)
+
+**************************************************************************************************************************************
+Q.3 Write a R program to reverse a number and also calculate the sum of digits of that
+number. [10 Marks]
+==>num <- 123
+sum_digits <- 0
+reversed_num <- 0
+
+while (num > 0) {
+  remainder <- num %% 10
+  sum_digits <- sum_digits + remainder
+  reversed_num <- reversed_num * 10 + remainder
+  num <- num %/% 10
+}
+
+cat("Original number:", num, "\n")
+cat("Reversed number:", reversed_num, "\n")
+cat("Sum of digits:", sum_digits, "\n")
+
+
+**************************************************************************************************************************************
+Q.4 Write a R program to calculate the sum of two matrices of given size. [10 Marks]
+==>
+m1 <- matrix(c(1, 2, 3, 4), nrow = 2, ncol = 2)
+m2 <- matrix(c(5, 6, 7, 8), nrow = 2, ncol = 2)
+
+print(m1)
+print(m2)
+
+cat("The addition of matices is \n")
+print(m1+m2)
+
+**************************************************************************************************************************************
+Q.5 Write a R program to concatenate two given factors. [10 Marks]
+==>
+
+factor1 <- factor(c("A", "B", "C"))
+factor2 <- factor(c("D", "E", "F"))
+
+concatenated_factors <- c(factor1, factor2)
+
+
+cat("Factor 1:", levels(factor1), "\n")
+cat("Factor 2:", levels(factor2), "\n")
+cat("Concatenated Factor:", levels(concatenated_factors), "\n")
+
+**************************************************************************************************************************************
+Q.6 Write a R program to create a data frame using two given vectors and display the
+duplicate elements. [10 Marks]
+==>
+a <- c(10, 20, 10, 10, 40, 50, 20, 30)
+b <- c(10, 30, 10, 20, 0, 50, 30, 30)
+
+# Create a data frame
+ab <- data.frame(a, b)
+
+# Display the original data frame
+cat("Original Data Frame:\n")
+print(ab)
+
+# Identify and display duplicate elements
+cat("\nDuplicate Elements of the Said Data Frame:\n")
+print(ab[duplicated(ab) | duplicated(ab, fromLast = TRUE), ])
+
+# Display unique rows
+cat("\nUnique Rows of the Said Data Frame:\n")
+print(unique(ab))
+
+**************************************************************************************************************************************
+Q.7 Write a R program to create a sequence of numbers from 20 to 50 and find the mean of
+numbers from 20 to 60 and sum of numbers from 51 to 91.
+[10 Marks]
+==>print("Sequence of numbers from 20 to 50:")
+print(seq(20,50))
+print("Mean of numbers from 20 to 60:")
+print(mean(20:60))
+print("Sum of numbers from 51 to 91:")
+print(sum(51:91))
+
+**************************************************************************************************************************************
+Q.8 Write a R program to get the first 10 Fibonacci numbers. [10 Marks]
+==>Fibonacci <- numeric(10)
+Fibonacci[1] <- Fibonacci[2] <- 1
+for (i in 3:10) Fibonacci[i] <- Fibonacci[i - 2] + Fibonacci[i - 1]
+print("First 10 Fibonacci numbers:")
+print(Fibonacci)
+
+**************************************************************************************************************************************
+]
+Q.9 Write an R program to create a Data frames which contain details of 5 employees and display
+summary of the data. [10 Marks]
+==># Create a data frame with employee details
+employee_data <- data.frame(
+  EmployeeID = c(1, 2, 3, 4, 5),
+  Name = c("John", "Jane", "Bob", "Alice", "Eve"),
+  Age = c(30, 28, 35, 25, 22),
+  Salary = c(50000, 60000, 70000, 55000, 75000),
+  Department = c("HR", "IT", "Finance", "Marketing", "Operations")
+)
+
+# Display the data frame
+cat("Employee Data:\n")
+print(employee_data)
+
+# Display summary of the data
+cat("\nSummary of Employee Data:\n")
+summary(employee_data)
+
+
+**************************************************************************************************************************************
+Q.10 Write a R program to find the maximum and the minimum value of a given vector [10 Marks]
+==># Given vector (change values as needed)
+given_vector <- c(15, 8, 23, 10, 45, 12, 5, 18)
+
+# Find the maximum and minimum values
+max_value <- max(given_vector)
+min_value <- min(given_vector)
+
+# Display the results
+cat("Given Vector:", given_vector, "\n")
+cat("Maximum Value:", max_value, "\n")
+cat("Minimum Value:", min_value, "\n")
+
+**************************************************************************************************************************************
+
+Q.11 Write a R program to find all elements of a given list that are not in another given list.
+AB st("x", "y", "z")
+st("X", "Y", "Z", "x", "y", "z") [10 Marks]
+==>
+list1<-list("x","y","z")
+list2<-list("X","Y","Z","x","y","z")
+
+elements<-setdiff(unlist(list2),unlist(list1))
+
+print(elements)
+
+*************************************************************************************************************************************
+**************************************************************************************************************************************
+Q.12)Draw a pie chart using R programming for the following datadistribution:
+Digits on Dice
+1 2 3 4 5 6
+Frequency of getting each number
+7 2 6 3 4 8
+[10 Marks]
+==># Data distribution
+dice_data <- c('1' = 7, '2' = 2, '3' = 6, '4' = 3, '5'= 4, '6' = 8)
+
+# Create a pie chart
+pie(dice_data, labels = names(dice_data), main = "Pie Chart - Dice Roll Distribution")
+
+
+
+
+**************************************************************************************************************************************
+Q. Write a script in R to create a list of employees (name) and perform thefollowing:
+a. Display names of employees in the list.
+b. Add an employee at the end of the list
+c. Remove the third element of the list. [10 Marks]
+==>
+employees <- list("om", "harshad", "darshan", "rohan")
+
+cat("Names of employees in the list:\n")
+print(employees)
+
+new_employee<- "pravin"
+employees<- c(employees, new_employee)
+
+cat("\nList after adding a new employee at the end:\n")
+print(employees)
+
+
+  employees <- employees[-3]
+  cat("\nList after removing the third element:\n")
+  print(employees)
+
+
+**************************************************************************************************************************************
+Q. Write a R program to create a simple bar plot of given data
+Year Export Import
+2001 26 35
+2002 32 40
+2003 35 50
+[10 Marks]
+==># Given data
+year <- c(2001, 2002, 2003)
+export <- c(26, 32, 35)
+import <- c(35, 40, 50)
+
+# Shortened Bar plot
+barplot(rbind(export, import), beside = TRUE, names.arg = year)
+
+**************************************************************************************************************************************
+**************************************************************************************************************
+Q. Write a R program to create a data frame from four given vectors.
+[10 Marks]
+==>
+# Given vectors
+name <- c("om", "darshan", "harshad", "rohan")
+age <- c(25, 30, 22, 28)
+city <- c("buldhana", "Sangli", "alandi", "hinjewadi")
+salary <- c(50000, 60000, 45000, 55000)
+
+
+data_frame <- data.frame(Name = name, Age = age, City = city, Salary = salary)
+print(data_frame)
+
+**************************************************************************************************************************************
